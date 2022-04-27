@@ -1,0 +1,64 @@
+class Main {
+  public static void main(String[] args) { 
+    
+    
+  }
+}
+public class carouselwheel extends subsystem {
+  private boolean act2;
+  public carouselwheel (String name, int power, boolean activate){
+  super(name, power);
+  }
+  this.act1 = act2; 
+}
+public class drivetrain extends subsystem {
+  private boolean act3;
+  public drivetrain (String name, int power, boolean activate){
+  super(name, power);
+  }
+  this.act1 = act3; 
+}
+public class gamepad {
+}
+public class intake extends subsystem {
+  private boolean act1;
+  public intake (String name, int power, boolean activate){
+  super(name, power);
+  }
+  this.act1 = act1; 
+}
+public abstract class subsystem {
+   public String name;
+  public int power;
+  public abstract void init(); 
+    public abstract void update();
+  public subsystem (String name, int power){
+    this.name = name; 
+    this.power = power; 
+  }
+  public int init; 
+  public String init(int power) {
+    System.out.println("Init Sub");
+  if(power == 1){
+    String status = "active";
+  }
+  else {String status = "inactive";
+    }
+  }
+  return status;
+}
+public String update;
+public String update(int[] args){
+  System.out.println("upadate Sub");
+  if(power == 1){
+    String status = "active";
+    
+  }
+  else {
+    String status = "inactive";
+  }
+
+}
+  return status; 
+}
+
