@@ -1,0 +1,47 @@
+import java.util.Scanner;
+public class QuadSolver {
+
+    
+  public static void main(String[] Strings) {
+
+        Scanner input = new Scanner(System.in);
+
+            System.out.print("Give me a number for a: ");
+            double a = input.nextDouble();
+            System.out.print("Give me a number for b: ");
+              double b = input.nextDouble();
+              System.out.print("Give me a number for c:");
+                double c = input.nextDouble();
+
+                  double result = b * b - 4.0 * a * c;
+
+            if (result > 0.0) {
+                double r1 = (-b + Math.pow(result, 0.5)) / (2.0 * a);
+                  double r2 = (-b - Math.pow(result, 0.5)) / (2.0 * a);
+                System.out.println("The roots of the quadratic equation you entered values for are " + r1 + " and " + r2);
+            } else if (result == 0.0) {
+                double r1 = -b / (2.0 * a);
+                System.out.println("The only root is of the quadratic equation you entered values for" + r1);
+            } else {
+                System.out.println("The equation has no real roots and is catagorized as no solution.");
+            }
+
+    }
+}
+class Fibbonacci {
+  public static void main(String[] args) {
+
+    int x = 1, y = 10, Term1 = 0, Term2 = 1;
+    System.out.println("The Fibonacci Series up until " + y + " terms is:");
+
+    while (x <= y) {
+      System.out.print(Term1 + ", ");
+
+      int nextTerm = Term1 + Term2;
+      Term1 = Term2;
+      Term2 = nextTerm;
+
+      x++;
+    }
+  }
+}
