@@ -1,0 +1,115 @@
+// PID controller: set setpoint, where the positoni(as of y) your robto want to get to. it calculates the power needed to reach the proper velicity. as the errror gets less, the power gradually decreaes
+//P-proportional; I- integral ; D- derivative ; FF- feed forward 
+//derivative - slope of a line at some point
+// integral - area of space under a graph
+import math.random;
+ class Main {
+  public static void main(String[] args) {
+
+    public void direct(){
+      System.out.println("The drivetrain's current state is: stopped.");
+    }
+    public void direct2(){
+      System.out.println("The shooter's current state is: stopped.");
+    }
+  }
+}
+
+public interface Command{
+  public void execute();
+  public void init();
+ 
+  public boolean isFinished();
+  public void end(boolean interrupted);
+
+  public static void main(String[] args){
+    RunDrivetrain firstCommand = new RunDrivetrain(()->{
+      return Math.random();
+    });
+    while(!firstCommand.isFinished()){
+      firstCommand.execute();
+    }
+    firstCommand.end(false);
+    
+    Shootball secondCommand = new Shootball(()->{
+      return Math.random();
+    });
+    while(!secondcommand.isFinished()){
+      secondcommand.execute();
+    }
+    secondcommand.end(false);
+  }
+}
+
+
+import java.util.function.Supplier;
+import java.util.function.Consumer;
+public class RunDrivetrain implements Command{
+  public Consumer<Double> runMotor;
+  public Supplier<Double> motorPower;
+
+  private int countdown = 5;
+
+  public RunDrivetrain(Supplier<Double> motorPower){
+    this.runMotor = (power) -> {
+      System.out.println("Set drivetrain to " + power);
+    };
+    this.motorPower = motorPower;
+  }
+
+  @Override
+  public void init(){
+    this.motorPower.get();
+  } 
+  @Override
+  public boolean isFinished(){
+    this.countdown--;
+    return this.countdown == 0;
+  }
+  @Override
+  public void execute(){
+    this.runMotor.accept(this.motorPower.get());
+  }
+ 
+  @Override
+  public void end(boolean interrupted){
+    this.runMotor.accept(0.0);
+  }
+}
+
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+public class fireprojectile implements Command{
+  
+  public Supplier<Double> motorPower;
+public Consumer<Double> runMotor;
+  private int countdown = 10;
+
+  public fireprojectile (Supplier<Double> motorPower){
+    this.runMotor = (power) -> {
+      System.out.println("Set shooter to " + power);
+    };
+    this.motorPower = motorPower;
+  }
+
+  @Override
+  public void init(){
+    this.motorPower.get();
+  }
+  
+  @Override
+  public boolean isFinished(){
+    this.countdown--;
+    return this.countdown == 0;
+  }
+  @Override
+  public void execute(){
+    this.runMotor.accept(this.motorPower.get());
+  }
+  @Override
+  public void end(boolean interrupted){
+    this.runMotor.accept(0.0);
+    System.out.println("The shooter's currnet status is: stopped.");
+  }
+}
