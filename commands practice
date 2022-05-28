@@ -1,0 +1,22 @@
+class Main {
+goTo(Places.kitchen){ parallel command
+lookforfridge();
+WaitUntil(fridge.see);
+}
+
+makeLunch(){ race command
+  washvegetables();
+  cutvegetables();
+  getmeat();
+  frymeat();
+  makesandwich();          
+            
+}
+
+  
+goTo(Places.upstairs);
+
+chilltime(){ parallel command
+eatsandwich();
+watchyoutube();
+WaitUntil(Myself.satisfied);
